@@ -3,6 +3,9 @@ A minimalistic build automation tool
 
 ```json
 {
+  "cppTarget": 17,
+  "output": "neutralino_${BZ_OS}-${BZ_ARCH}",
+  "include": ["."],
   "sourceFiles": {
     "*": [
       "app/.*",
@@ -24,8 +27,6 @@ A minimalistic build automation tool
   },
   "definitions": [
     "TESTV=1"
-  ],
-  "include": ["."],
-  "output": "neutralino_${BZ_OS}-${BZ_ARCH}"
+  ]
 }
 ```
