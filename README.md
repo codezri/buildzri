@@ -6,7 +6,7 @@ A minimalistic build automation tool
   "cppTarget": 17,
   "output": "neutralino_${BZ_OS}-${BZ_ARCH}",
   "include": ["."],
-  "sourceFiles": {
+  "source": {
     "*": [
       "app/.*",
       "os/.*"
