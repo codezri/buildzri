@@ -18,10 +18,13 @@ A minimalistic build automation tool
       "test_mac.mm"
     ] 
   },
-  "flags": {
+  "options": {
     "*": [],
-    "linux": ["-DTEST_OPTION=1"]
+    "linux": ["-no-pie", "-pthread"]
   },
+  "definitions": [
+    "TESTV=1"
+  ],
   "include": ["."],
   "output": "neutralino_${BZ_OS}-${BZ_ARCH}"
 }
