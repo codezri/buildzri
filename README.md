@@ -14,6 +14,11 @@
 - Written in Python, works on any popular OS
 - Built for both developers and CI/CD servers
 
+
+## Example build configuration
+
+_file: buildzri.config.json_
+
 ```json
 {
   "cppTarget": 17,
