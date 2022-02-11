@@ -1,5 +1,18 @@
-# buildzri
-A minimalistic build automation tool
+```
+  ____        _ _     _ ______     _ 
+ |  _ \      (_) |   | |___  /    (_)
+ | |_) |_   _ _| | __| |  / / _ __ _ 
+ |  _ <| | | | | |/ _` | / / | '__| |
+ | |_) | |_| | | | (_| |/ /__| |  | |
+ |____/ \__,_|_|_|\__,_/_____|_|  |_|
+ 
+ BuildZri - A minimalistic build automation tool
+```
+
+- Minimalist JSON-based configuration
+- Supports, GNU C++, Clang, and MSVC compilers
+- Written in Python, works on any popular OS
+- Built for both developers and CI/CD servers
 
 ```json
 {
