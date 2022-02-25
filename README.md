@@ -48,3 +48,15 @@ _file: buildzri.config.json_
   ]
 }
 ```
+
+## Command-line interface
+
+```bash
+./bz.py --param1=value --param2=value
+```
+
+`--param1` and `--param2` become `BZ_PARAM1` and `BZ_PARAM2` respectively in the buildzri runner.
+
+## Global variables
+
+- `BZ_OS`- OS name: `linux`, `mac`, and `win`
