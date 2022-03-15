@@ -22,7 +22,9 @@ _file: buildzri.config.json_
 ```json
 {
   "cppTarget": 17,
-  "output": "neutralino_${BZ_OS}-${BZ_ARCH}",
+  "name": "Neutralinojs",
+  "version": "4.4.0",
+  "output": "./bin/neutralino_${BZ_OS}-${BZ_ARCH}",
   "include": ["."],
   "source": {
     "*": [
