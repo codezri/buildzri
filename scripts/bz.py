@@ -84,19 +84,6 @@ def get_target():
         out_prefix = '/OUT:'
     return '%s%s ' % (out_prefix, out_file)
 
-def print_ascii_art():
-    print('''
-  ____        _ _     _ ______     _
- |  _ \      (_) |   | |___  /    (_)
- | |_) |_   _ _| | __| |  / / _ __ _
- |  _ <| | | | | |/ _` | / / | '__| |
- | |_) | |_| | | | (_| |/ /__| |  | |
- |____/ \__,_|_|_|\__,_/_____|_|  |_|
-
- BuildZri - A minimal build automation tool for C++
-
-    ''')
-
 def build_compiler_cmd():
     cmd = get_compiler()
     cmd += get_std()
@@ -109,6 +96,19 @@ def compile(cmd):
     print('Compiling %s...' % C['name'])
     print('Running cmd: %s' % cmd)
     os.system(cmd)
+
+def print_ascii_art():
+    print('''
+  ____        _ _     _ ______     _
+ |  _ \      (_) |   | |___  /    (_)
+ | |_) |_   _ _| | __| |  / / _ __ _
+ |  _ <| | | | | |/ _` | / / | '__| |
+ | |_) | |_| | | | (_| |/ /__| |  | |
+ |____/ \__,_|_|_|\__,_/_____|_|  |_|
+
+ BuildZri - A minimal build automation tool for C++
+
+    ''')
 
 if __name__ == '__main__':
     with open(BZ_CONFIG_FILE) as configFile:
