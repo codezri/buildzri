@@ -6,7 +6,7 @@
  | |_) | |_| | | | (_| |/ /__| |  | |
  |____/ \__,_|_|_|\__,_/_____|_|  |_|
  
- BuildZri - A minimalistic build automation tool
+ BuildZri - A minimalistic build automation tool for C++
 ```
 
 - Minimal JSON-based configuration
