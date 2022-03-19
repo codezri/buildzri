@@ -1,0 +1,30 @@
+{
+  "std": "c++17",
+  "name": "BuildZri Sample",
+  "version": "1.0.0",
+  "output": "./bin/bzsample-${BZ_OS}_${BZ_ARCH}",
+  "include": ["."],
+  "source": {
+    "*": [
+      "*.cpp",
+      "add/*.cpp",
+      "subtract/*.cpp"
+    ],
+    "linux": [
+      "platform/linux.cpp"
+    ],
+    "windows": [
+      "test_win.cpp"
+    ],
+    "darwin": [
+      "test_mac.mm"
+    ]
+  },
+  "options": {
+    "*": [],
+    "linux": ["-no-pie", "-pthread"]
+  },
+  "definitions": [
+    "BZ_TESTV=1"
+  ]
+}
