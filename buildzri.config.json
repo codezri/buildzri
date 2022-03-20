@@ -3,7 +3,14 @@
   "name": "BuildZri Sample",
   "version": "1.0.0",
   "output": "./bin/bzsample-${BZ_OS}_${BZ_ARCH}",
-  "include": ["."],
+  "include": {
+    "*": [
+      "."
+    ],
+    "windows": [
+      "platform"
+    ]
+  },
   "source": {
     "*": [
       "*.cpp",

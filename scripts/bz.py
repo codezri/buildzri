@@ -50,6 +50,24 @@ def get_source_files():
 
     return files
 
+def get_includes():
+    if 'include' not in C:
+        return ''
+
+    inc_defs = ['*', BZ_OS]
+    incs = ''
+    inc_prefix = '-I'
+    if BZ_ISWIN:
+        inc_prefix = '/I'
+
+    for inc_def in inc_defs:
+        if inc_def not in C['include']:
+            continue
+        for entry in C['include'][inc_def]:
+            incs += '%s %s ' % (inc_prefix, entry)
+
+    return incs
+
 def get_definitions():
     if 'definitions' not in C:
         return ''
@@ -69,6 +87,8 @@ def get_target():
         return ''
 
     out_prefix = '-o '
+    if BZ_ISWIN:
+        out_prefix = '/OUT:'
     out_file = C['output']
 
     out_file = out_file\
@@ -80,8 +100,6 @@ def get_target():
     if out_path != '' and not os.path.isdir(out_path):
         os.makedirs(out_path, exist_ok = True)
 
-    if BZ_ISWIN:
-        out_prefix = '/OUT:'
     return '%s%s ' % (out_prefix, out_file)
 
 def build_compiler_cmd():
@@ -89,6 +107,7 @@ def build_compiler_cmd():
     cmd += get_std()
     cmd += get_source_files()
     cmd += get_definitions()
+    cmd += get_includes()
     cmd += get_target()
     return cmd
 
