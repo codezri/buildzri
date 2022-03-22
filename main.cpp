@@ -11,6 +11,10 @@ int main() {
     #if defined(BZ_TESTV)
     cout << "BZ_TESTV is defined" << endl;
     #endif
+
+    #if defined(BZ_PROJ_VERSION)
+    cout << "Project version: v" << BZ_PROJ_VERSION << endl;
+    #endif
     return 0;
 }
 

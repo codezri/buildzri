@@ -7,6 +7,7 @@ import glob
 
 C = {}
 
+BZ_VERSION = '1.0.0'
 BZ_CONFIG_FILE = 'buildzri.config.json'
 BZ_OS = platform.system().lower()
 BZ_ISLINUX = BZ_OS == 'linux'
@@ -26,6 +27,18 @@ def get_os_shortname():
 def get_compiler():
     compilers = {'linux': 'g++', 'windows': 'cl', 'darwin': 'c++'}
     return compilers[BZ_OS] + ' '
+
+def apply_template_vars(text):
+    return text\
+        .replace('${BZ_OS}', get_os_shortname()) \
+        .replace('${BZ_VERSION}', C['version']) \
+        .replace('${BZ_ARCH}', get_arch())
+
+def get_target_name():
+    out_file = C['output']
+
+    out_file = apply_template_vars(out_file)
+    return out_file
 
 def get_std():
     if 'std' not in C:
@@ -73,12 +86,16 @@ def get_definitions():
         return ''
 
     defs = ''
+    def_defs = ['*', BZ_OS]
     def_prefix = '-D'
     if BZ_ISWIN:
         def_prefix = '/D'
 
-    for entry in C['definitions']:
-        defs += '%s%s ' % (def_prefix, entry)
+    for def_def in def_defs:
+        if def_def not in C['definitions']:
+            continue
+        for entry in C['definitions'][def_def]:
+            defs += '%s%s ' % (def_prefix, apply_template_vars(entry))
 
     return defs
 
@@ -89,32 +106,53 @@ def get_target():
     out_prefix = '-o '
     if BZ_ISWIN:
         out_prefix = '/OUT:'
-    out_file = C['output']
-
-    out_file = out_file\
-        .replace('${BZ_OS}', get_os_shortname()) \
-        .replace('${BZ_ARCH}', get_arch())
+    out_file = get_target_name()
 
     out_path = os.path.dirname(out_file)
 
     if out_path != '' and not os.path.isdir(out_path):
         os.makedirs(out_path, exist_ok = True)
 
+    if os.path.exists(out_file):
+        os.remove(out_file)
+
     return '%s%s ' % (out_prefix, out_file)
+
+def get_options():
+    if 'options' not in C:
+        return ''
+
+    opt_defs = ['*', BZ_OS]
+    opts = ''
+
+    for opt_def in opt_defs:
+        if opt_def not in C['options']:
+            continue
+        for entry in C['options'][opt_def]:
+            opts += '%s ' % entry
+    return opts
 
 def build_compiler_cmd():
     cmd = get_compiler()
     cmd += get_std()
+    cmd += get_includes()
     cmd += get_source_files()
     cmd += get_definitions()
-    cmd += get_includes()
+    cmd += get_options()
     cmd += get_target()
     return cmd
 
 def compile(cmd):
     print('Compiling %s...' % C['name'])
     print('Running cmd: %s' % cmd)
-    os.system(cmd)
+    exit_code = os.system(cmd)
+    msg = ''
+    if exit_code == 0:
+        msg = 'OK: %s compiled into %s' % (C['name'], get_target_name())
+    else:
+        msg = 'ERR: Unable to compile %s' % C['name']
+
+    print(msg)
 
 def print_ascii_art():
     print('''
@@ -125,9 +163,9 @@ def print_ascii_art():
  | |_) | |_| | | | (_| |/ /__| |  | |
  |____/ \__,_|_|_|\__,_/_____|_|  |_|
 
- BuildZri - A minimal build automation tool for C++
+ BuildZri v%s - A minimal build automation tool for C++
 
-    ''')
+    ''' % BZ_VERSION)
 
 if __name__ == '__main__':
     with open(BZ_CONFIG_FILE) as configFile:

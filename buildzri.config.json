@@ -1,37 +1,50 @@
 {
-  "std": "c++17",
-  "name": "BuildZri Sample",
-  "version": "1.0.0",
-  "output": "./bin/bzsample-${BZ_OS}_${BZ_ARCH}",
-  "include": {
+    "std": "c++17",
+    "name": "BuildZri Sample",
+    "version": "1.0.1",
+    "output": "./bin/bzsample-${BZ_OS}_${BZ_ARCH}",
+    "include": {
+        "*": [
+            "."
+        ],
+        "windows": [
+            "platform"
+        ]
+    },
+    "source": {
     "*": [
-      "."
-    ],
-    "windows": [
-      "platform"
-    ]
-  },
-  "source": {
-    "*": [
-      "*.cpp",
-      "add/*.cpp",
-      "subtract/*.cpp"
+        "*.cpp",
+        "add/*.cpp",
+        "subtract/*.cpp"
     ],
     "linux": [
-      "platform/linux.cpp"
+        "platform/linux.cpp"
     ],
     "windows": [
-      "test_win.cpp"
+        "test_win.cpp"
     ],
     "darwin": [
-      "test_mac.mm"
+        "test_mac.mm"
     ]
-  },
-  "options": {
-    "*": [],
-    "linux": ["-no-pie", "-pthread"]
-  },
-  "definitions": [
-    "BZ_TESTV=1"
-  ]
+    },
+    "options": {
+        "*": [],
+        "linux": ["-no-pie", "-pthread"]
+    },
+    "definitions": {
+        "*": [
+            "BZ_TESTV=1",
+            "BZ_PROJ_VERSION='\"${BZ_VERSION}\"'"
+        ]
+    },
+    "options": {
+        "*": [
+        ],
+            "windows": [
+            "/EHsc"
+        ],
+        "linux": [
+            "-pthread"
+        ]
+    }
 }
