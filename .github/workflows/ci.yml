@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build the sample program
-        run: python ./scripts/bz.py --verbose
+        run: python ./scripts/bz.py
         
       - name: Run the sample program
         run: bin\bzsample-win_x64
