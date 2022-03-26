@@ -38,4 +38,4 @@ jobs:
         run: python ./scripts/bz.py
         
       - name: Run the sample app
-        run: bin\bzsample-win_x64
+        run: bin\\bzsample-win_x64
