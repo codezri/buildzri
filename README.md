@@ -21,32 +21,42 @@ _file: buildzri.config.json_
 
 ```json
 {
-  "cppTarget": 17,
-  "name": "Neutralinojs",
-  "version": "4.4.0",
-  "output": "./bin/neutralino_${BZ_OS}-${BZ_ARCH}",
-  "include": ["."],
-  "source": {
-    "*": [
-      "app/.*",
-      "os/.*"
-    ],
-    "linux": [
-      "test_linux.cpp"
-    ],
-    "windows": [
-      "test_win.cpp"
-    ],
-    "darwin": [
-      "test_mac.mm"
-    ] 
-  },
-  "options": {
-    "*": [],
-    "linux": ["-no-pie", "-pthread"]
-  },
-  "definitions": [
-    "TESTV=1"
-  ]
+    "std": "c++17",
+    "name": "BuildZri Sample",
+    "version": "1.0.1",
+    "output": "./bin/bzsample-${BZ_OS}_${BZ_ARCH}",
+    "include": {
+        "*": [
+            "."
+        ]
+    },
+    "source": {
+        "*": [
+            "*.cpp",
+            "add/*.cpp",
+            "subtract/*.cpp"
+        ],
+        "linux": [
+            "platform/linux.cpp"
+        ]
+    },
+    "definitions": {
+        "*": [
+            "BZ_TESTV=1",
+            "BZ_PROJ_VERSION=\\\"${BZ_VERSION}\\\""
+        ]
+    },
+    "options": {
+        "windows": [
+            "/EHsc"
+        ],
+        "linux": [
+            "-Os"
+        ]
+    }
 }
 ```
+
+## License
+
+[MIT](LICENSE)
