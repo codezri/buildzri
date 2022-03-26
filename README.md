@@ -48,11 +48,16 @@ _file: buildzri.config.json_
         ]
     },
     "options": {
-        "windows": [
-            "/EHsc"
-        ],
         "linux": [
             "-Os"
+        ],
+        "darwin": [
+            "-Os"
+        ],
+        "windows": [
+            "/EHsc",
+            "/Os",
+            "/link"
         ]
     }
 }
