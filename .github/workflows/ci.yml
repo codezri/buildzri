@@ -30,7 +30,7 @@ jobs:
         run: ./bin/bzsample-mac_x64
 
   windows-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -39,3 +39,4 @@ jobs:
         
       - name: Run the sample app
         run: bin\\bzsample-win_x64
+        shell: cmd
