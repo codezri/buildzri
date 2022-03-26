@@ -30,7 +30,7 @@
         ],
         "darwin": [
             "-Os"
-        ]
+        ],
         "windows": [
             "/EHsc",
             "/Os",
