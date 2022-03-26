@@ -6,13 +6,14 @@
  | |_) | |_| | | | (_| |/ /__| |  | |
  |____/ \__,_|_|_|\__,_/_____|_|  |_|
  
- BuildZri - A minimalistic build automation tool for C++
+ BuildZri - A minimal build automation tool for C++
 ```
 
 - Minimal JSON-based configuration
 - Supports, GNU C++, Clang, and MSVC compilers
 - Written in Python, works on any popular OS
 - Built for both developers and CI/CD servers
+- No installation required, it comes as a simple script
 
 
 ## Example build configuration
