@@ -15,7 +15,7 @@ jobs:
       - name: Build the sample program
         run: ./scripts/bz.py
         
-      - name: Run the sample app
+      - name: Run the sample program
         run: ./bin/bzsample-linux_x64
         
   macos-test:
@@ -26,7 +26,7 @@ jobs:
       - name: Build the sample program
         run: ./scripts/bz.py
         
-      - name: Run the sample app
+      - name: Run the sample program
         run: ./bin/bzsample-mac_x64
 
   windows-test:
@@ -37,6 +37,6 @@ jobs:
       - name: Build the sample program
         run: python ./scripts/bz.py
         
-      - name: Run the sample app
-        run: bin\\bzsample-win_x64
+      - name: Run the sample program
+        run: bin\bzsample-win_x64
         shell: cmd
