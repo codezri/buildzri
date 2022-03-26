@@ -6,45 +6,30 @@
     "include": {
         "*": [
             "."
-        ],
-        "windows": [
-            "platform"
         ]
     },
     "source": {
-    "*": [
-        "*.cpp",
-        "add/*.cpp",
-        "subtract/*.cpp"
-    ],
-    "linux": [
-        "platform/linux.cpp"
-    ],
-    "windows": [
-        "test_win.cpp"
-    ],
-    "darwin": [
-        "test_mac.mm"
-    ]
-    },
-    "options": {
-        "*": [],
-        "linux": ["-no-pie", "-pthread"]
+        "*": [
+            "*.cpp",
+            "add/*.cpp",
+            "subtract/*.cpp"
+        ],
+        "linux": [
+            "platform/linux.cpp"
+        ]
     },
     "definitions": {
         "*": [
             "BZ_TESTV=1",
-            "BZ_PROJ_VERSION='\"${BZ_VERSION}\"'"
+            "BZ_PROJ_VERSION=\\\"${BZ_VERSION}\\\""
         ]
     },
     "options": {
-        "*": [
-        ],
-            "windows": [
+        "windows": [
             "/EHsc"
         ],
         "linux": [
-            "-pthread"
+            "-Os"
         ]
     }
 }
