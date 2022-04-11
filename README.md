@@ -69,6 +69,12 @@ Please check the [BuildZri documentation](https://codezri.org/docs/buildzri/intr
 }
 ```
 
+The above sample configuration generates the following binaries:
+
+- `./bin/bzsample-linux_x64` on x64 GNU/Linux machines
+- `./bin/bzsample-mac_x64` on x64/arm64 macOS machines
+- `./bin/bzsample-win_x64.exe` on x64 Windows machines
+
 ## License
 
 [MIT](LICENSE)
