@@ -13,6 +13,8 @@ Most C++ build automation tools come with a bit complex syntax and make simple p
 
 BuildZri is a minimal cross-platform C++ build automation tool written in Python. It comes with a simple JSON-based configuration file with the features you need.
 
+Please check the [BuildZri documentation](https://codezri.org/docs/buildzri/intro) for more details.
+
 ## Features
 
 - Minimal JSON-based configuration
@@ -23,8 +25,6 @@ BuildZri is a minimal cross-platform C++ build automation tool written in Python
 
 
 ## Example build configuration
-
-_file: buildzri.config.json_
 
 ```json
 {
