@@ -75,6 +75,8 @@ The above sample configuration generates the following binaries:
 - `./bin/bzsample-mac_x64` on x64/arm64 macOS machines
 - `./bin/bzsample-win_x64.exe` on x64 Windows machines
 
+This repository contains a simple C++ project that uses BuildZri as the build automation tool.
+
 ## License
 
 [MIT](LICENSE)
