@@ -6,4 +6,6 @@ rename `Unreleased` topic with the new version tag. Finally, create a new `Unrel
 
 ## Unreleased
 
+## v1.0.0
+
 - Initial version
