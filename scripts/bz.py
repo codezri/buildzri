@@ -16,6 +16,8 @@ BZ_ISLINUX = BZ_OS == 'linux'
 BZ_ISDARWIN = BZ_OS == 'darwin'
 BZ_ISWIN = BZ_OS == 'windows'
 BZ_ISVERBOSE = '--verbose' in sys.argv
+BZ_ISDEBUG = '--debug' in sys.argv or '-d' in sys.argv
+BZ_ISRELEASE = not BZ_ISDEBUG and '--release' in sys.argv or '-r' in sys.argv
 
 def get_arch(short_names = True):
     arch = platform.machine().lower()
@@ -169,14 +171,27 @@ def get_options():
     if 'options' not in C:
         return ''
 
-    opt_defs = ['*', BZ_OS]
     opts = ''
 
+    if BZ_ISDEBUG and 'debug' in C['options']:
+        debug_opts = C['options']['debug']
+        if BZ_OS in debug_opts:
+            for entry in debug_opts[BZ_OS]:
+                opts += '%s ' % apply_template_vars(entry)
+
+    if BZ_ISRELEASE and 'release' in C['options']:
+        debug_opts = C['options']['release']
+        if BZ_OS in debug_opts:
+            for entry in debug_opts[BZ_OS]:
+                opts += '%s ' % apply_template_vars(entry)
+
+    opt_defs = ['*', BZ_OS]
     for opt_def in opt_defs:
         if opt_def not in C['options']:
             continue
         for entry in C['options'][opt_def]:
             opts += '%s ' % apply_template_vars(entry)
+    
     return opts
 
 def build_compiler_cmd():
