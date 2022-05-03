@@ -173,16 +173,15 @@ def get_options():
 
     opts = ''
 
-    if BZ_ISDEBUG and 'debug' in C['options']:
-        debug_opts = C['options']['debug']
+    if BZ_ISDEBUG and 'debugOptions' in C:
+        debug_opts = C['debugOptions']
         if BZ_OS in debug_opts:
             for entry in debug_opts[BZ_OS]:
                 opts += '%s ' % apply_template_vars(entry)
-
-    if BZ_ISRELEASE and 'release' in C['options']:
-        debug_opts = C['options']['release']
-        if BZ_OS in debug_opts:
-            for entry in debug_opts[BZ_OS]:
+    elif BZ_ISRELEASE and 'releaseOptions' in C:
+        release_opts = C['releaseOptions']
+        if BZ_OS in release_opts:
+            for entry in release_opts[BZ_OS]:
                 opts += '%s ' % apply_template_vars(entry)
 
     opt_defs = ['*', BZ_OS]
@@ -191,7 +190,7 @@ def get_options():
             continue
         for entry in C['options'][opt_def]:
             opts += '%s ' % apply_template_vars(entry)
-    
+
     return opts
 
 def build_compiler_cmd():
@@ -237,7 +236,8 @@ def print_ascii_art():
 
 if __name__ == '__main__':
     with open(BZ_CONFIG_FILE) as configFile:
-        print_ascii_art()
+        # print_ascii_art()
         C = json.loads(configFile.read())
-        cmd = build_compiler_cmd()
-        compile(cmd)
+        print(get_options())
+        # cmd = build_compiler_cmd()
+        # compile(cmd)
