@@ -236,8 +236,7 @@ def print_ascii_art():
 
 if __name__ == '__main__':
     with open(BZ_CONFIG_FILE) as configFile:
-        # print_ascii_art()
+        print_ascii_art()
         C = json.loads(configFile.read())
-        print(get_options())
-        # cmd = build_compiler_cmd()
-        # compile(cmd)
+        cmd = build_compiler_cmd()
+        compile(cmd)
