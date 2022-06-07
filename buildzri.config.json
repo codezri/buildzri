@@ -36,5 +36,15 @@
             "/Os",
             "/link"
         ]
+    },
+    "debugOptions": {
+        "linux": [
+            "-O0"
+        ]
+    },
+    "releaseOptions": {
+        "linux": [
+            "-O3"
+        ]
     }
 }
